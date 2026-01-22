@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Allstate Property</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- COPY STYLE DARI INDEX.HTML AGAR KONSISTEN --- */
+        :root {
+            --bg-body: #ffffff;
+            --text-dark: #1A1A1A;
+            --text-muted: #666666;
+            --primary-btn: #1A1A1A;
+            --card-radius: 20px;
+            --wa-color: #25D366;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5 { font-weight: 600; }
+        .text-muted { color: var(--text-muted) !important; font-weight: 400; }
+        
+        /* Buttons */
+        .btn-black {
+            background-color: var(--primary-btn);
+            color: white;
+            border-radius: 50px;
+            padding: 12px 30px;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: 2px solid var(--primary-btn);
+            white-space: nowrap;
+        }
+        .btn-black:hover { background-color: transparent; color: var(--primary-btn); }
+
+        .section-padding { padding: 80px 0; }
+        .rounded-4 { border-radius: var(--card-radius) !important; }
+
+        /* Navbar */
+        .navbar {
+            padding-top: 20px; 
+            padding-bottom: 20px;
+            transition: all 0.3s ease-in-out;
+            z-index: 1030;
+        }
+        .navbar-scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+        .navbar-brand { font-weight: 700; font-size: 1.2rem; display: flex; align-items: center; gap: 8px; }
+        .nav-link { color: var(--text-dark); font-weight: 500; margin: 0 10px; }
+        .nav-link.active { color: var(--primary-btn); font-weight: 700; } 
+        .navbar-toggler { border: none; padding: 0; }
+        .navbar-toggler:focus { box-shadow: none; }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #E0F2F1 0%, #EDE7F6 100%);
+            padding-top: 120px;
+            padding-bottom: 80px;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            position: relative;
+            width: 100%;
+            overflow: hidden; 
+        }
+        .hero-title { font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; }
+
+        /* Project Cards */
+        .property-card {
+            background: transparent;
+            border: none;
+            transition: transform 0.3s;
+            cursor: pointer;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .property-card:hover { transform: translateY(-5px); }
+        .property-card img {
+            border-radius: 20px;
+            height: 250px;
+            object-fit: cover;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        .rating-badge { font-size: 0.9rem; font-weight: 600; }
+        .price-tag { font-weight: 700; font-size: 1.1rem; }
+        .card-content { flex-grow: 1; }
+
+        /* Footer */
+        footer { padding-top: 60px; padding-bottom: 30px; font-size: 0.9rem; }
+        .footer-list { list-style: none; padding: 0; }
+        .footer-list li { margin-bottom: 10px; }
+        .footer-list a { text-decoration: none; color: var(--text-muted); }
+
+        /* Floating Buttons */
+        .floating-container {
+            position: fixed;
+            bottom: 30px;
+            right: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 999;
+        }
+        .btn-float {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        .btn-wa { background-color: var(--wa-color); font-size: 1.5rem; }
+        .btn-top { background-color: var(--text-dark); font-size: 1.2rem; display: none; }
+
+        /* --- PROJECTS PAGE SPECIFIC STYLES --- */
+        
+        .filter-container {
+            background: white;
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            margin-top: -60px; /* Overlap Hero */
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Desktop Buttons Style */
+        .filter-btn {
+            border: 1px solid #ddd;
+            background: transparent;
+            color: var(--text-muted);
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: 0.3s;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--text-dark);
+            color: white;
+            border-color: var(--text-dark);
+        }
+
+        /* Mobile Dropdown Style */
+        .mobile-filter-select {
+            border: 2px solid #eee;
+            border-radius: 50px;
+            padding: 12px 20px;
+            font-weight: 500;
+            color: var(--text-dark);
+            width: 100%;
+            cursor: pointer;
+            background-color: #fff;
+        }
+        .mobile-filter-select:focus {
+            border-color: var(--text-dark);
+            box-shadow: none;
+        }
+
+        .search-box input {
+            border: 2px solid #eee;
+            border-radius: 50px;
+            padding: 12px 25px;
+            width: 100%;
+            outline: none;
+            transition: 0.3s;
+        }
+        .search-box input:focus {
+            border-color: var(--text-dark);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                background: white;
+                padding: 20px;
+                border-radius: 20px;
+                margin-top: 10px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+            .hero-title { font-size: 2.5rem; }
+            .hero-section { padding-top: 100px; padding-bottom: 100px; border-radius: 0 0 30px 30px; }
+            .section-padding { padding: 50px 0; }
+            .container { padding-left: 25px; padding-right: 25px; }
+            .filter-container { margin-top: -80px; padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-buildings-fill"></i> Allstate
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav text-center text-lg-start mt-3 mt-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="about.html">About us</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="projects.html">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="agents.html">Agents</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                </ul>
+                <div class="d-lg-none mt-3">
+                    <a href="#" class="btn btn-black w-100">Contact us</a>
+                </div>
+            </div>
+            <div class="d-none d-lg-flex align-items-center gap-3">
+                <a href="#" class="btn btn-outline-dark rounded-pill px-4">Contact us</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero-section">
+        <div class="container text-center">
+            <p class="text-muted mb-2 text-uppercase fw-bold" style="font-size: 0.8rem; letter-spacing: 2px;">Our Portfolio</p>
+            <h1 class="hero-title mb-4">Discover Your Future<br>Home</h1>
+            <p class="text-muted mx-auto mb-5" style="max-width: 600px; font-size: 1.1rem;">
+                Explore our handpicked selection of premium properties tailored to your lifestyle.
+            </p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="filter-container">
+            <div class="row align-items-center gy-3">
+                <div class="col-lg-8">
+                    <div class="d-none d-md-flex flex-wrap" id="categoryFiltersDesktop">
+                        <button class="filter-btn active" onclick="filterSelection('all')">All</button>
+                        <button class="filter-btn" onclick="filterSelection('villa')">Villa</button>
+                        <button class="filter-btn" onclick="filterSelection('apartment')">Apartment</button>
+                        <button class="filter-btn" onclick="filterSelection('residence')">Residence</button>
+                    </div>
+
+                    <div class="d-block d-md-none">
+                        <select class="form-select mobile-filter-select" id="categoryFilterMobile" onchange="filterSelection(this.value)">
+                            <option value="all">All Categories</option>
+                            <option value="villa">Villa</option>
+                            <option value="apartment">Apartment</option>
+                            <option value="residence">Residence</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="search-box position-relative">
+                        <input type="text" id="searchInput" onkeyup="searchProjects()" placeholder="Search project">
+                        <i class="bi bi-search position-absolute top-50 end-0 translate-middle-y me-3 text-muted"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="container section-padding">
+        <div class="row g-4" id="projectGrid">
+            
+            <div class="col-lg-4 col-md-6 project-item" data-category="villa">
+                <div class="property-card">
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Villa">
+                    <div class="card-content">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="mb-0 project-title">Sobha Heartland II</h5>
+                            <span class="rating-badge"><i class="bi bi-star-fill text-warning"></i> 4.83</span>
+                        </div>
+                        <p class="text-muted small mb-3 project-desc">4 Bedroom Villa for Rent in Al Barsha 1 Villas, Al Barsha 1.</p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-auto pt-2">
+                        <span class="price-tag">$189 <span class="text-muted fw-normal small">/Night</span></span>
+                        <a href="#" class="btn btn-black btn-sm px-3">Detail</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 project-item" data-category="apartment">
+                <div class="property-card">
+                    <img src="https://images.unsplash.com/photo-1600566753086-00f18cf6b3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Apartment">
+                    <div class="card-content">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="mb-0 project-title">Mykonos Lagoons</h5>
+                            <span class="rating-badge"><i class="bi bi-star-fill text-warning"></i> 4.67</span>
+                        </div>
+                        <p class="text-muted small mb-3 project-desc">2 Bedroom Apartment for Rent in Balqis Residence.</p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-auto pt-2">
+                        <span class="price-tag">$560 <span class="text-muted fw-normal small">/Night</span></span>
+                        <a href="#" class="btn btn-black btn-sm px-3">Detail</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 project-item" data-category="residence">
+                <div class="property-card">
+                    <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Residence">
+                    <div class="card-content">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="mb-0 project-title">Verdana 2 Residence</h5>
+                            <span class="rating-badge"><i class="bi bi-star-fill text-warning"></i> 4.45</span>
+                        </div>
+                        <p class="text-muted small mb-3 project-desc">1 Bedroom Apartment for Rent in Dubai Marina.</p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-auto pt-2">
+                        <span class="price-tag">$231 <span class="text-muted fw-normal small">/Night</span></span>
+                        <a href="#" class="btn btn-black btn-sm px-3">Detail</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 project-item" data-category="villa">
+                <div class="property-card">
+                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Villa">
+                    <div class="card-content">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="mb-0 project-title">Palm Jumeirah Villa</h5>
+                            <span class="rating-badge"><i class="bi bi-star-fill text-warning"></i> 4.90</span>
+                        </div>
+                        <p class="text-muted small mb-3 project-desc">Luxury 5 Bedroom Villa with private beach access.</p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-auto pt-2">
+                        <span class="price-tag">$950 <span class="text-muted fw-normal small">/Night</span></span>
+                        <a href="#" class="btn btn-black btn-sm px-3">Detail</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 project-item" data-category="apartment">
+                <div class="property-card">
+                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Apartment">
+                    <div class="card-content">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="mb-0 project-title">Downtown Views</h5>
+                            <span class="rating-badge"><i class="bi bi-star-fill text-warning"></i> 4.75</span>
+                        </div>
+                        <p class="text-muted small mb-3 project-desc">Modern 3 Bedroom Apartment near Burj Khalifa.</p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-auto pt-2">
+                        <span class="price-tag">$420 <span class="text-muted fw-normal small">/Night</span></span>
+                        <a href="#" class="btn btn-black btn-sm px-3">Detail</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 project-item" data-category="residence">
+                <div class="property-card">
+                    <img src="https://images.unsplash.com/photo-1515263487990-61b07816b324?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Residence">
+                    <div class="card-content">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="mb-0 project-title">Marina Gate</h5>
+                            <span class="rating-badge"><i class="bi bi-star-fill text-warning"></i> 4.60</span>
+                        </div>
+                        <p class="text-muted small mb-3 project-desc">Premium Residence with full marina view.</p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-auto pt-2">
+                        <span class="price-tag">$310 <span class="text-muted fw-normal small">/Night</span></span>
+                        <a href="#" class="btn btn-black btn-sm px-3">Detail</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        <div id="noResults" class="text-center py-5 d-none">
+            <i class="bi bi-emoji-frown display-4 text-muted mb-3"></i>
+            <h4 class="text-muted">Oops! No projects found.</h4>
+            <p class="text-muted">Try adjusting your search or category.</p>
+        </div>
+    </section>
+
+    <footer class="container">
+        <div class="row gy-4">
+            <div class="col-lg-4">
+                <a href="index.html" class="d-flex align-items-center gap-2 text-dark text-decoration-none mb-3 fw-bold">
+                    <i class="bi bi-buildings-fill"></i> Allstate
+                </a>
+                <p class="text-muted small" style="max-width: 250px;">
+                    Providing the best real estate service for you and your family.
+                </p>
+            </div>
+            <div class="col-6 col-lg-2">
+                <h6 class="text-uppercase fw-bold mb-3" style="font-size: 0.8rem;">Home</h6>
+                <ul class="footer-list">
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Resources</a></li>
+                    <li><a href="#">Agents</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-lg-2">
+                <h6 class="text-uppercase fw-bold mb-3" style="font-size: 0.8rem;">Company</h6>
+                <ul class="footer-list">
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="#">Community</a></li>
+                    <li><a href="#">Reviews</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-lg-2">
+                <h6 class="text-uppercase fw-bold mb-3" style="font-size: 0.8rem;">Resource</h6>
+                <ul class="footer-list">
+                    <li><a href="#">Press info</a></li>
+                    <li><a href="#">Customers</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-lg-2">
+                <h6 class="text-uppercase fw-bold mb-3" style="font-size: 0.8rem;">Social</h6>
+                <div class="d-flex flex-column gap-2">
+                    <a href="#" class="text-decoration-none text-muted small">Instagram</a>
+                    <a href="#" class="text-decoration-none text-muted small">Facebook</a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-4 text-muted opacity-25">
+        <div class="d-flex flex-wrap justify-content-between text-muted small gap-2 text-center text-md-start">
+            <div class="w-100 w-md-auto">&copy; 2023 Allstate Property.</div>
+        </div>
+    </footer>
+
+    <div class="floating-container">
+        <a href="#" class="btn-float btn-top" id="scrollTopBtn">
+            <i class="bi bi-arrow-up"></i>
+        </a>
+        <a href="https://wa.me/628123456789" class="btn-float btn-wa" target="_blank">
+            <i class="bi bi-whatsapp"></i>
+        </a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // --- 1. Navbar Scroll & Top Button Script ---
+        const navbar = document.querySelector('.navbar');
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                scrollTopBtn.style.display = "flex";
+            } else {
+                scrollTopBtn.style.display = "none";
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+
+        // --- 2. ACTIVE SEARCH & FILTER SCRIPT (Synced Desktop & Mobile) ---
+        
+        let currentCategory = 'all';
+
+        // Fungsi Filter Utama
+        function filterSelection(category) {
+            currentCategory = category;
+            
+            // 1. Update Tampilan Tombol Desktop
+            const btns = document.getElementsByClassName("filter-btn");
+            for (let i = 0; i < btns.length; i++) {
+                btns[i].classList.remove("active");
+                if(btns[i].innerText.toLowerCase() === category || (category === 'all' && btns[i].innerText === 'All')) {
+                    btns[i].classList.add("active");
+                }
+            }
+
+            // 2. Update Tampilan Dropdown Mobile (Sinkronisasi)
+            const mobileSelect = document.getElementById('categoryFilterMobile');
+            if(mobileSelect) {
+                mobileSelect.value = category;
+            }
+            
+            // 3. Jalankan Logic Filter
+            executeFilter();
+        }
+
+        // Fungsi Search Text (Input)
+        function searchProjects() {
+            executeFilter();
+        }
+
+        // Logic Filter Gabungan (Category + Search)
+        function executeFilter() {
+            const input = document.getElementById('searchInput');
+            const filterValue = input.value.toLowerCase();
+            const items = document.getElementsByClassName('project-item');
+            let visibleCount = 0;
+
+            for (let i = 0; i < items.length; i++) {
+                const item = items[i];
+                const title = item.querySelector('.project-title').innerText.toLowerCase();
+                const desc = item.querySelector('.project-desc').innerText.toLowerCase();
+                const category = item.getAttribute('data-category');
+
+                const categoryMatch = (currentCategory === 'all' || category === currentCategory);
+                const textMatch = (title.indexOf(filterValue) > -1) || (desc.indexOf(filterValue) > -1);
+
+                if (categoryMatch && textMatch) {
+                    item.style.display = "block";
+                    visibleCount++;
+                } else {
+                    item.style.display = "none";
+                }
+            }
+
+            const noResultMsg = document.getElementById('noResults');
+            if (visibleCount === 0) {
+                noResultMsg.classList.remove('d-none');
+            } else {
+                noResultMsg.classList.add('d-none');
+            }
+        }
+    </script>
+</body>
+</html>
