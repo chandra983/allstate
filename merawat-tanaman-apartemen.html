@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tips Membeli Rumah Pertama - Allstate Blog</title>
+    <title>Merawat Tanaman Hias di Balkon dan Jendela Apartemen, Panduan Lengkap untuk Pemula - Allstate Blog</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* --- GLOBAL STYLE (SAMA DENGAN INDEX) --- */
+        /* --- GLOBAL STYLE --- */
         :root {
             --bg-body: #ffffff;
             --text-dark: #1A1A1A;
@@ -64,32 +64,11 @@
         .navbar-toggler { border: none; padding: 0; }
         .navbar-toggler:focus { box-shadow: none; }
 
-        /* Footer & CTA */
-        .cta-section {
-            background-color: #1A1A1A;
-            color: white;
-            border-radius: 40px;
-            padding: 60px;
-            position: relative;
-            overflow: hidden;
-        }
-        .cta-img {
-            position: absolute;
-            right: 0;
-            top: 0;
-            height: 100%;
-            width: 50%;
-            object-fit: cover;
-            opacity: 0.6;
-            mask-image: linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0));
-            -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0));
-        }
         footer { padding-top: 60px; padding-bottom: 30px; font-size: 0.9rem; }
         .footer-list { list-style: none; padding: 0; }
         .footer-list li { margin-bottom: 10px; }
         .footer-list a { text-decoration: none; color: var(--text-muted); }
 
-        /* Floating Buttons */
         .floating-container {
             position: fixed;
             bottom: 30px;
@@ -114,21 +93,15 @@
         .btn-wa { background-color: var(--wa-color); font-size: 1.5rem; }
         .btn-top { background-color: var(--text-dark); font-size: 1.2rem; display: none; }
 
-        /* --- BLOG DETAIL STYLES --- */
-        
         .article-container { max-width: 800px; margin: 0 auto; }
-        
         .breadcrumb a { text-decoration: none; color: var(--text-muted); }
         .breadcrumb-item.active { color: var(--text-dark); font-weight: 600; }
-
         .article-content p { line-height: 1.8; color: #444; margin-bottom: 20px; font-size: 1.05rem; }
         .article-content h2 { margin-top: 40px; margin-bottom: 20px; font-size: 1.8rem; }
         .article-content h3 { margin-top: 30px; margin-bottom: 15px; font-size: 1.4rem; }
-        
         .article-main-img { width: 100%; border-radius: 20px; margin-bottom: 10px; }
         .img-caption { text-align: center; color: var(--text-muted); font-size: 0.9rem; font-style: italic; margin-bottom: 30px; display: block; }
         
-        /* TOC */
         .toc-box {
             background: #f8f9fa;
             border: 1px solid #eee;
@@ -144,22 +117,6 @@
         }
         .toc-list { list-style: none; padding-left: 0; margin-top: 15px; margin-bottom: 0; display: none; }
         .toc-list.show { display: block; }
-        .toc-list li { margin-bottom: 8px; }
-        .toc-list li a { text-decoration: none; color: var(--text-dark); font-weight: 500; }
-        .toc-list li a:hover { text-decoration: underline; }
-        .toc-list .toc-h3 { padding-left: 20px; font-size: 0.95rem; color: var(--text-muted); }
-
-        blockquote {
-            border-left: 4px solid var(--text-dark);
-            padding-left: 20px;
-            margin: 30px 0;
-            font-style: italic;
-            font-size: 1.2rem;
-            color: #333;
-            background: #fafafa;
-            padding: 20px 20px 20px 30px;
-            border-radius: 0 10px 10px 0;
-        }
 
         .read-also-box {
             border-left: 4px solid #d4a574;
@@ -170,37 +127,6 @@
         }
         .read-also-box a { text-decoration: none; color: var(--text-dark); font-weight: 700; }
         .read-also-box a:hover { text-decoration: underline; }
-
-        /* === REVISI FAQ STYLE (CLEAN CARD LOOK) === */
-        .accordion-item {
-            border: 1px solid #eee; /* Garis tipis seperti di foto */
-            border-radius: 15px !important;
-            margin-bottom: 15px;
-            background: white;
-            overflow: hidden;
-        }
-        .accordion-button {
-            background-color: white; /* Background putih */
-            padding: 25px; /* Spacing lebih lega */
-            font-weight: 500;
-            font-size: 1.1rem;
-            color: var(--text-dark);
-            box-shadow: none !important;
-        }
-        .accordion-button:not(.collapsed) {
-            background-color: #fcfcfc; /* Sedikit beda saat dibuka */
-            color: var(--text-dark);
-            box-shadow: none;
-        }
-        .accordion-button::after {
-            /* Pastikan panah tetap default bootstrap (hitam) */
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
-        }
-        .accordion-body {
-            padding: 0 25px 25px 25px; /* Padding konten */
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
 
         .author-box {
             background: #fff;
@@ -231,17 +157,10 @@
         .share-wa { background: #25D366; }
         .share-li { background: #0077b5; }
 
-        .related-card { border: none; transition: 0.3s; }
-        .related-card:hover { transform: translateY(-5px); }
-        .related-img { height: 200px; width: 100%; object-fit: cover; border-radius: 15px; margin-bottom: 15px; }
-        .read-more-link { text-decoration: none; color: var(--text-dark); font-weight: 600; border-bottom: 2px solid transparent; }
-        .read-more-link:hover { border-bottom-color: var(--text-dark); }
-
         @media (max-width: 768px) {
             .navbar-collapse { background: white; padding: 20px; border-radius: 20px; margin-top: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
             .hero-section { padding-top: 100px; padding-bottom: 40px; border-radius: 0 0 30px 30px; }
             .container { padding-left: 25px; padding-right: 25px; }
-            .cta-img { display: none; }
             .author-box { flex-direction: column; text-align: center; }
         }
     </style>
@@ -283,21 +202,21 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Beranda</a></li>
                     <li class="breadcrumb-item"><a href="blog.html">Blog</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Tips Properti</li>
+                    <li class="breadcrumb-item active" aria-current="page">Hobi</li>
                 </ol>
             </nav>
 
-            <h1 class="display-5 fw-bold mb-3">Panduan Lengkap Membeli Rumah Pertama untuk Milenial di Tahun 2024</h1>
+            <h1 class="display-5 fw-bold mb-3">Merawat Tanaman Hias di Balkon dan Jendela Apartemen, Panduan Lengkap untuk Pemula</h1>
             
             <div class="d-flex align-items-center gap-3 mb-4 text-muted small">
-                <span><i class="bi bi-person-circle"></i> Sarah Mitchell</span>
-                <span><i class="bi bi-calendar3"></i> 24 Jan 2026</span>
-                <span><i class="bi bi-tag"></i> Edukasi</span>
+                <span><i class="bi bi-person-circle"></i> Admin Allstate</span>
+                <span><i class="bi bi-calendar3"></i> 22 Agt 2023</span>
+                <span><i class="bi bi-tag"></i> Berkebun</span>
             </div>
 
             <figure class="mb-5">
-                <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Pasangan muda melihat rumah impian" class="article-main-img shadow-sm">
-                <figcaption class="img-caption">Ilustrasi: Pasangan muda sedang merencanakan pembelian rumah pertama mereka.</figcaption>
+                <img src="https://images.unsplash.com/photo-1466781783364-391eaf539f14?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Tanaman di Balkon" class="article-main-img shadow-sm">
+                <figcaption class="img-caption">Ilustrasi: Balkon apartemen yang asri dengan deretan tanaman hias yang sehat.</figcaption>
             </figure>
 
             <div class="toc-box">
@@ -309,82 +228,69 @@
             </div>
 
             <div class="article-content" id="articleBody">
-                <p>Membeli rumah pertama adalah salah satu pencapaian terbesar dalam hidup. Namun, proses ini bisa menjadi sangat menakutkan, terutama bagi generasi milenial yang dihadapkan pada kenaikan harga properti yang signifikan. Artikel ini akan memandu Anda langkah demi langkah.</p>
+                <p>Tinggal di apartemen sering kali berarti harus merelakan kehadiran halaman atau taman yang luas. Namun, keterbatasan lahan bukan menjadi penghalang bagi Anda yang ingin menghadirkan nuansa alam ke dalam hunian. Balkon yang kecil atau bahkan area di depan jendela bisa menjadi oase hijau yang menyejukkan. Tanaman hias tidak hanya mempercantik ruangan, tetapi juga meningkatkan kualitas udara dan memberikan efek relaksasi bagi penghuninya.</p>
+                
+                <p>Bagi pemula, merawat tanaman di lingkungan apartemen yang cenderung kering dan terkena paparan sinar matahari langsung bisa menjadi tantangan. Namun, dengan pengetahuan yang tepat mengenai jenis tanaman dan cara perawatannya, Anda bisa menciptakan taman mini yang asri dan berumur panjang. Tulisan ini hadir sebagai panduan lengkap untuk membantu Anda memulai perjalanan berkebun di apartemen, mulai dari memilih tanaman yang tepat hingga cara mengatasinya jika tanaman terserang hama.</p>
 
                 <div class="read-also-box">
                     <small class="text-uppercase text-muted d-block mb-1" style="font-size: 0.7rem;">Baca Juga:</small>
-                        <a href="blog-detail.html" class="read-more-link mt-auto">Baca Selengkapnya <i class="bi bi-arrow-right"></i></a>
+                    <a href="hunian-vertikal-apartemen.html">Hidup Nyaman di Hunian Vertikal, Panduan Lengkap dan Tips Praktis</a>
                 </div>
 
-                <h2>1. Tentukan Budget dan Kemampuan Finansial</h2>
-                <p>Langkah pertama bukan mencari rumah, melainkan melihat isi dompet. Lakukan audit finansial pribadi. Hitung rasio utang terhadap pendapatan (Debt Service Ratio) Anda. Bank biasanya menyetujui cicilan jika total utang tidak lebih dari 30% pendapatan bulanan.</p>
+                <h2>Memilih Lokasi yang Tepat: Sinar Matahari adalah Kunci</h2>
+                <p>Sebelum membeli tanaman, amati terlebih dahulu kondisi cahaya di balkon atau jendela Anda. Ini adalah langkah paling krusial karena setiap tanaman memiliki kebutuhan cahaya yang berbeda.</p>
+                
+                <h3>1. Amati Intensitas Cahaya</h3>
+                <p>Balkon yang menghadap ke timur akan mendapatkan cahaya pagi yang lembut, sementara balkon yang menghadap ke barat akan mendapatkan cahaya sore yang terik dan panas. Jendela yang menghadap ke utara biasanya minim cahaya, sedangkan yang menghadap ke selatan mendapatkan cahaya yang cukup stabil sepanjang hari. Sesuaikan pilihan tanaman Anda dengan arah hadap pintu atau jendela apartemen.</p>
+                
+                <h3>2. Pertimbangkan Sirkulasi Udara</h3>
+                <p>Tanaman membutuhkan sirkulasi udara yang baik agar tidak mudah terserang jamur. Pastikan balkon Anda memiliki aliran udara yang lancar. Namun, waspadai juga angin yang terlalu kencang, terutama untuk lantai yang sangat tinggi, karena dapat membuat tanaman kering atau bahkan tumbang.</p>
 
-                <blockquote>
-                    "Jangan memaksakan membeli rumah yang melebihi kemampuan bayar Anda. Rumah impian bisa jadi mimpi buruk jika cicilannya mencekik."
-                </blockquote>
+                <h2>Jenis Tanaman yang Cocok untuk Apartemen</h2>
+                <p>Pilihlah tanaman yang memiliki daya tahan baik dan tidak memerlukan perawatan yang terlalu rumit. Berikut beberapa rekomendasi untuk pemula:</p>
+                
+                <h3>1. Lidah Mertua (Snake Plant)</h3>
+                <p>Tanaman ini sangat tangguh dan bisa hidup di berbagai kondisi cahaya, mulai dari minim cahaya hingga sinar matahari langsung. Lidah mertua juga dikenal sangat efektif dalam menyaring udara kotor.</p>
+                
+                <h3>2. Sirih Gading (Pothos)</h3>
+                <p>Tanaman merambat ini sangat mudah dirawat dan cepat tumbuh. Sirih gading sangat cantik jika diletakkan di pot gantung di atas jendela atau merambat di dinding balkon.</p>
+                
+                <h3>3. Lidah Buaya (Aloe Vera)</h3>
+                <p>Selain mempercantik ruangan, lidah buaya memiliki banyak manfaat untuk kesehatan kulit. Tanaman ini menyukai sinar matahari yang cukup tetapi tidak terlalu terik.</p>
+                
+                <h3>4. Sukulen dan Kaktus</h3>
+                <p>Untuk area jendela yang sangat panas dan kering, sukulen dan kaktus adalah pilihan terbaik. Mereka tidak perlu sering disiram dan memiliki berbagai bentuk yang unik.</p>
 
-                <h2>2. Pilih Lokasi yang Strategis</h2>
-                <p>Lokasi menentukan segalanya. Pertimbangkan akses ke tempat kerja, transportasi umum, dan fasilitas kesehatan. Ingat, Anda bisa merenovasi rumah, tapi Anda tidak bisa memindahkan lokasinya.</p>
+                <div class="read-also-box">
+                    <small class="text-uppercase text-muted d-block mb-1" style="font-size: 0.7rem;">Baca Juga:</small>
+                    <a href="memaksimalkan-ruang-apartemen.html">Cara Cerdas Memaksimalkan Ruang di Apartemen Mungil</a>
+                </div>
 
-                <h3>Faktor Pendukung Lokasi:</h3>
+                <h2>Panduan Perawatan untuk Pemula</h2>
+                <p>Merawat tanaman hias di apartemen memerlukan perhatian yang konsisten namun tidak harus menyita waktu.</p>
+                
+                <h3>1. Teknik Penyiraman yang Benar</h3>
+                <p>Kesalahan umum pemula adalah menyiram tanaman terlalu sering. Pastikan tanah sudah terasa kering hingga kedalaman 2-3 cm sebelum menyiram kembali. Siramlah secukupnya hingga air keluar dari lubang drainase pot. Lakukan penyiraman pada pagi atau sore hari, hindari menyiram di tengah hari yang panas.</p>
+                
+                <h3>2. Pemilihan Pot dan Drainase</h3>
+                <p>Pastikan setiap pot memiliki lubang drainase yang baik agar air tidak menggenang di dasar pot yang bisa menyebabkan akar tanaman busuk. Anda bisa meletakkan piring kecil di bawah pot untuk menampung sisa air agar tidak mengotori lantai balkon.</p>
+                
+                <h3>3. Pemupukan Secara Berkala</h3>
+                <p>Berikan pupuk cair atau pupuk organik setiap 2-4 minggu sekali selama masa pertumbuhan untuk membantu tanaman tetap sehat dan subur. Ikuti petunjuk penggunaan pada kemasan pupuk agar tidak berlebihan.</p>
+                
+                <h3>4. Membersihkan Daun</h3>
+                <p>Debu yang menempel pada daun dapat menghambat proses fotosintesis. Lap daun tanaman secara rutin dengan kain lembap agar tanaman tetap segar dan dapat bernapas dengan baik.</p>
+
+                <h2>Mengatasi Masalah pada Tanaman</h2>
+                <p>Jangan panik jika tanaman Anda menunjukkan tanda-tanda stres. Cermati gejalanya untuk mengetahui penyebabnya.</p>
                 <ul>
-                    <li>Jarak ke pintu tol atau stasiun MRT/KRL.</li>
-                    <li>Bebas banjir (cek riwayat 5 tahun terakhir).</li>
-                    <li>Potensi kenaikan harga tanah (Capital Gain).</li>
+                    <li><strong>Daun Menguning:</strong> Biasanya disebabkan oleh penyiraman yang berlebihan (overwatering) atau kurang cahaya.</li>
+                    <li><strong>Daun Kecokelatan dan Kering:</strong> Biasanya karena kurang air atau paparan sinar matahari yang terlalu terik.</li>
+                    <li><strong>Hama (Kutu Daun):</strong> Segera bersihkan dengan sabun khusus tanaman atau pestisida organik untuk mencegah penyebaran ke tanaman lain.</li>
                 </ul>
 
-                <figure class="my-4">
-                    <img src="https://images.unsplash.com/photo-1449844908441-8829872d2607?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Lingkungan perumahan asri" class="img-fluid rounded-4 w-100">
-                    <figcaption class="img-caption">Pilihlah lingkungan yang mendukung gaya hidup dan pertumbuhan keluarga Anda.</figcaption>
-                </figure>
-
-                <h2>3. Pahami Biaya Tambahan (Hidden Cost)</h2>
-                <p>Banyak pembeli pemula hanya fokus pada DP dan cicilan. Padahal, ada biaya-biaya lain yang harus disiapkan di muka, seperti BPHTB, Biaya Notaris, Biaya KPR, dan Asuransi.</p>
-
-                <div class="read-also-box">
-                    <small class="text-uppercase text-muted d-block mb-1" style="font-size: 0.7rem;">Baca Juga:</small>
-                    <a href="blog-detail.html">Simulasi Biaya Notaris dan Pajak Jual Beli Rumah Terbaru</a>
-                </div>
-
-                <h2>4. Promo Menarik Bulan Ini</h2>
-                <p>Kami memiliki penawaran khusus untuk Anda yang sedang mencari hunian di area berkembang. Cek promo di bawah ini:</p>
-                
-                <div class="text-center my-4">
-                    <img src="https://media.giphy.com/media/l2Je1bFuOpNfqpIX6/giphy.gif" alt="Promo Rumah" class="img-fluid rounded-4" style="max-height: 300px; width: 100%; object-fit: cover;">
-                    <figcaption class="img-caption mt-2">Dapatkan diskon DP 0% untuk cluster terbaru kami!</figcaption>
-                </div>
-
-                <h2>5. FAQ: Pertanyaan Umum Pembeli Pertama</h2>
-                
-                <div class="accordion mb-4" id="faqArticle">
-                    <div class="accordion-item">
-                        <h4 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqA1">
-                                Berapa minimal DP yang harus disiapkan?
-                            </button>
-                        </h4>
-                        <div id="faqA1" class="accordion-collapse collapse" data-bs-parent="#faqArticle">
-                            <div class="accordion-body">
-                                Minimal DP bervariasi mulai dari 0% (program khusus) hingga 20%, tergantung kebijakan bank dan developer.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h4 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqA2">
-                                Lebih baik rumah baru (indent) atau second?
-                            </button>
-                        </h4>
-                        <div id="faqA2" class="accordion-collapse collapse" data-bs-parent="#faqArticle">
-                            <div class="accordion-body">
-                                Rumah baru biasanya memiliki desain modern dan promo pembayaran ringan, sedangkan rumah second kelebihannya adalah lingkungan yang sudah jadi dan bangunan siap huni.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <h2>Kesimpulan</h2>
-                <p>Membeli rumah pertama membutuhkan riset dan kesabaran. Jangan terburu-buru mengambil keputusan. Konsultasikan dengan agen properti terpercaya untuk mendapatkan opsi terbaik sesuai budget Anda.</p>
+                <h2>Penutup</h2>
+                <p>Menghadirkan taman mini di apartemen adalah investasi untuk kenyamanan dan kesehatan mental Anda. Dengan pemilihan tanaman yang tepat dan konsistensi dalam merawatnya, tanaman hias akan tumbuh subur dan memberikan keasrian yang Anda dambakan di tengah hiruk pikuk kehidupan kota.</p>
 
             </div>
 
@@ -397,12 +303,12 @@
             </div>
 
             <div class="author-box">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Sarah Mitchell" class="author-img shadow-sm">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Admin Allstate" class="author-img shadow-sm">
                 <div>
-                    <h5 class="mb-1 fw-bold">Sarah Mitchell</h5>
-                    <p class="text-muted small mb-2">Konsultan Properti Senior</p>
+                    <h5 class="mb-1 fw-bold">Admin Allstate</h5>
+                    <p class="text-muted small mb-2">Pakar Properti & Investasi</p>
                     <p class="text-muted small mb-0">
-                        Sarah memiliki pengalaman lebih dari 8 tahun membantu keluarga muda menemukan hunian impian mereka. Ia aktif menulis artikel edukasi properti.
+                        Tim editorial Allstate Property yang berdedikasi untuk memberikan wawasan terbaru seputar dunia real estat di Indonesia.
                     </p>
                 </div>
             </div>
@@ -410,64 +316,7 @@
         </div>
     </article>
 
-    <section class="container section-padding bg-light rounded-top-5 mt-5">
-        <div class="text-center mb-5">
-            <h3>Artikel Terkait</h3>
-            <p class="text-muted">Baca wawasan menarik lainnya seputar properti</p>
-        </div>
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="card related-card h-100 bg-white p-3 rounded-4">
-                    <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="related-img" alt="Rel 1">
-                    <div class="card-body p-0">
-                        <small class="text-muted mb-2 d-block">15 Dec 2023</small>
-                        <h5 class="card-title fw-bold">Cara Menghitung Bunga KPR Floating</h5>
-                        <p class="card-text text-muted small">Pahami cara kerja bunga floating agar cicilan tidak membengkak di tahun berjalan.</p>
-                        <a href="blog-detail.html" class="read-more-link mt-auto">Baca Selengkapnya <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card related-card h-100 bg-white p-3 rounded-4">
-                    <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="related-img" alt="Rel 2">
-                    <div class="card-body p-0">
-                        <small class="text-muted mb-2 d-block">18 Dec 2023</small>
-                        <h5 class="card-title fw-bold">Tren Desain Interior 2024</h5>
-                        <p class="card-text text-muted small">Konsep minimalis tropis diprediksi akan mendominasi pasar properti tahun depan.</p>
-                        <a href="blog-detail.html" class="read-more-link mt-auto">Baca Selengkapnya <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card related-card h-100 bg-white p-3 rounded-4">
-                    <img src="https://images.unsplash.com/photo-1554469384-e58fac16e23a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="related-img" alt="Rel 3">
-                    <div class="card-body p-0">
-                        <small class="text-muted mb-2 d-block">20 Dec 2023</small>
-                        <h5 class="card-title fw-bold">Investasi Properti vs Saham</h5>
-                        <p class="card-text text-muted small">Mana yang lebih menguntungkan untuk jangka panjang? Simak analisis lengkapnya.</p>
-                        <a href="blog-detail.html" class="read-more-link mt-auto">Baca Selengkapnya <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="container mb-5 mt-5">
-        <div class="cta-section">
-            <div class="row position-relative" style="z-index: 2;">
-                <div class="col-lg-7">
-                    <h2 class="mb-3 text-white">Siap temukan rumah impian?</h2>
-                    <p class="text-white-50 mb-4" style="max-width: 450px;">
-                        Konsultasikan dengan agen kami sekarang juga.
-                    </p>
-                    <a href="https://wa.me/628123456789" target="_blank" class="btn btn-light rounded-pill px-4 py-2 fw-bold">Hubungi Kami Sekarang</a>
-                </div>
-            </div>
-            <img src="https://images.unsplash.com/photo-1516156008625-3a9d6067fab5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="cta-img" alt="Decor">
-        </div>
-    </section>
-
-    <footer class="container">
+    <footer class="container mt-5">
         <div class="row gy-4">
             <div class="col-lg-4">
                 <a href="index.html" class="d-flex align-items-center gap-2 text-dark text-decoration-none mb-3 fw-bold">
@@ -536,7 +385,6 @@
             } else {
                 navbar.classList.remove('navbar-scrolled');
             }
-
             if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
                 scrollTopBtn.style.display = "flex";
             } else {
@@ -549,24 +397,18 @@
             window.scrollTo({top: 0, behavior: 'smooth'});
         });
 
-        // AUTO GENERATE TOC
         document.addEventListener("DOMContentLoaded", function() {
             const articleBody = document.getElementById('articleBody');
             const tocList = document.getElementById('tocContent');
             const headers = articleBody.querySelectorAll('h2, h3');
-
             if (headers.length > 0) {
                 headers.forEach((header, index) => {
-                    if (!header.id) {
-                        header.id = 'section-' + index;
-                    }
+                    header.id = 'section-' + index;
                     const li = document.createElement('li');
                     const a = document.createElement('a');
                     a.href = '#' + header.id;
                     a.textContent = header.textContent;
-                    if (header.tagName === 'H3') {
-                        li.classList.add('toc-h3');
-                    }
+                    if (header.tagName === 'H3') li.classList.add('toc-h3');
                     li.appendChild(a);
                     tocList.appendChild(li);
                 });
@@ -578,28 +420,14 @@
         function toggleToc() {
             const tocList = document.getElementById('tocContent');
             const tocIcon = document.getElementById('tocIcon');
-            
             if (tocList.classList.contains('show')) {
                 tocList.classList.remove('show');
-                tocIcon.classList.remove('bi-chevron-up');
-                tocIcon.classList.add('bi-chevron-down');
+                tocIcon.classList.replace('bi-chevron-up', 'bi-chevron-down');
             } else {
                 tocList.classList.add('show');
-                tocIcon.classList.remove('bi-chevron-down');
-                tocIcon.classList.add('bi-chevron-up');
+                tocIcon.classList.replace('bi-chevron-down', 'bi-chevron-up');
             }
         }
-
-        // SHARE BUTTONS
-        document.addEventListener("DOMContentLoaded", function() {
-            const currentUrl = encodeURIComponent(window.location.href);
-            const pageTitle = encodeURIComponent(document.title);
-
-            document.getElementById('shareWa').href = `https://wa.me/?text=${pageTitle}%20${currentUrl}`;
-            document.getElementById('shareFb').href = `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`;
-            document.getElementById('shareTw').href = `https://twitter.com/intent/tweet?url=${currentUrl}&text=${pageTitle}`;
-            document.getElementById('shareLi').href = `https://www.linkedin.com/sharing/share-offsite/?url=${currentUrl}`;
-        });
     </script>
 </body>
 </html>
